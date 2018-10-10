@@ -1,0 +1,101 @@
+/*html {
+	
+}*/
+
+body {
+	margin: 0;
+}
+
+.table-ip-details {
+	border: 1px;
+	padding: 0;
+	border-collapse: collapse;
+	background: white;
+	font-size: 12px;
+}
+
+tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+
+table,td,th {
+	font-family: Georgia, Arial, sans-serif;
+	border: 2px solid rgb(200, 200, 200);
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+/*span {
+	height: auto;
+}*/
+
+#ip-address {
+	display: inline-block;
+}
+
+button.copy {
+	display: inline-block;
+}
+
+div.left {
+	float: left;
+	width: auto;
+}
+
+div.right {
+	width: auto;
+}
+
+div.below {
+	clear: 	left;
+}
+
+
+button#hide-specific-ip-input {
+    border: none;
+    background: none;
+    display: block;
+    color: #333;
+    text-align: left;
+    font-family: Georgia, Arial, sans-serif;
+    font-size: 12px;
+    cursor: pointer !important;
+}
+
+button#hide-specific-ip-input::before {
+    /*display: inline-block;*/
+/*    content: "\00AB   ";*/
+    margin-right: 5px;
+    -webkit-transform: rotate(-90deg);
+}
+
+
+#specific-ip-wrapper {
+	font-family: Georgia, Arial, sans-serif;
+	font-size: 12px;
+	display: block;
+
+}
+
+td {
+	text-align: center;
+	border: none;
+}
+
+th {
+	text-align: left;
+	border: none;
+}
+
+button.submit {
+	display: inline-block;
+	height: 20px;
+}
+
+input {
+	display: inline-block;
+	margin-right: 2px;
+	height: 15px;
+}
+

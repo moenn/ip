@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div class="show-ip-wrapper">
+        <table class="table-ip-details" width="300">
+            <tbody>
+                <tr>
+                    <th>ℹ️</th>
+                    <td>
+                        <span id="ip-address"></span>
+                        <button class="copy">Copy</button>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>🔥</th>
+                    <td id="ip-position">Checking...</td>
+                </tr>
+                <tr>
+                    <th>🏢</th>
+                    <td id="ip-organization"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <div class="left">
+            <button id="hide-specific-ip-input">查询特定IP⏩</button>
+        </div>
+        <div class="right" id="specific-ip-wrapper">
+                <input type="text" name="specific-ip" id="specific-ip">
+                <button type="submit" class="submit" id="specific-ip-submit">提交</button>      
+        </div>
+    </div>
+
+   <div class="below">
+        <input type="checkbox" id="instant-cp">
+        <label for="instant-cp">查询后立即复制IP</label>
+    </div>
+    <script type="text/javascript" src="./popup.js"></script>   
+
+</body>
+</html>

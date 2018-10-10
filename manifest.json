@@ -1,0 +1,13 @@
+{
+	"manifest_version" : 2,
+	"name" : "ip",
+	"version" : "0.0.20180912",
+	"browser_action" : {
+		"default_title" : "my ip",
+		"default_popup" : "popup.html"
+	},
+	"permissions":[
+		// "https://ip.cn/",
+		"https://ipapi.co/json/"
+	]
+}
