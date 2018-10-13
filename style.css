@@ -100,11 +100,4 @@ input {
 	height: 15px;
 }
 
-p.author {
-	display: inline;
-	float: right;
-	font-family: Georgia, Arial, sans-serif;
-	font-size: 10px;
-	color: grey;
-}
-	
+
