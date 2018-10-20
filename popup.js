@@ -1,9 +1,8 @@
 "use strict";
 var MYAPP = {};
 MYAPP.specific_ip = null;
-// url = "https://ip.cn/";
-var ownIpQueryUrl = "https://ipapi.co/json/";
-var speIpQueryBaseurl = `https://ipapi.co/${MYAPP.specific_ip}/json/`;
+var ownIpQueryUrl = "https://api.ip.sb/geoip";
+var speIpQueryBaseurl = `https://api.ip.sb/geoip/${MYAPP.specific_ip}`;
 
 function httpRequest(url, callback){
     var xhr = new XMLHttpRequest();
@@ -26,11 +25,8 @@ function copyTextToClipboard(text) {
   copyFrom.setAttribute("style","position:absolute; left: 0; top: 0; height: 0; visability: hidden;");
   copyFrom.textContent = text;
 
-  //"execCommand()" only works when there exists selected text, and the text is inside 
-  //document.body (meaning the text is part of a valid rendered HTML element).
   document.body.appendChild(copyFrom);
 
-  //Select all the text!
   copyFrom.select();
   document.execCommand('copy');
 
@@ -38,9 +34,7 @@ function copyTextToClipboard(text) {
   copyFrom.blur();
 
   document.body.removeChild(copyFrom);
-  //Remove the textbox field from the document.body, so no other JavaScript nor 
-  //other elements can get access to this.
-  // document.body.removeChild(copyFrom);
+
 }
 
 function handleCp(){
@@ -88,26 +82,33 @@ function handleHideButton(){
 }
 
 function handleSpecificIp(){
+  function ip(){
+      var ip = document.getElementById('specific-ip').value;
+      MYAPP.specific_ip = ip;
+      speIpQueryBaseurl = `https://api.ip.sb/geoip/${MYAPP.specific_ip}`;
+      showIp(speIpQueryBaseurl);
+  }
+
+
+  var el = document.getElementById('specific-ip');
+  el.addEventListener('keypress', (event) => {
+    if(event.key == 'Enter'){
+      ip();
+    }
+  });
+
   var el = document.getElementById('specific-ip-submit');
-  el.addEventListener('click', function(){
-    var ip = document.getElementById('specific-ip').value;
-    // console.log(ip);
-    MYAPP.specific_ip = ip;
-    speIpQueryBaseurl = `https://ipapi.co/${MYAPP.specific_ip}/json/`;
-    // console.log(speIpQueryBaseurl);
-    showIp(speIpQueryBaseurl);
-  }, false);
-
-
+  el.addEventListener('click', ip);
 }
+
 
 function showIp(url){
   httpRequest(url, function(ip){
     var ip_address = ip.ip;
     document.getElementById('ip-address').innerHTML = ip_address;
-    var position = ip.city + ',' + ip.region + ',' + ip.country_name;
+    var position = ip.city + ',' + ip.region + ',' + ip.country;
     document.getElementById('ip-position').innerText = position;
-    var organization = ip.org;
+    var organization = ip.organization;
     document.getElementById("ip-organization").innerText = organization;
 
     if (localStorage['instant_cp_enable'] === "true"){
